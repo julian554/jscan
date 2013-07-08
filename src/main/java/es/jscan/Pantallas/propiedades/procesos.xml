@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<procesos>
+
+    <proceso nombre="RECEPCION CON EXPEDIENTE">
+        <campo>
+            <nombre>Expediente</nombre>
+            <tipo>texto</tipo>
+            <valor>15</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>    
+    </proceso>
+
+    <proceso nombre="ADJUNTOS">
+        <campo>
+            <nombre>Expediente</nombre>
+            <tipo>texto</tipo>
+            <valor>15</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Nombre del Documento</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Notificar al Instructor</nombre>
+            <tipo>check</tipo>
+            <valor>0</valor>
+            <obligatorio>N</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>  
+    </proceso>
+  
+    <proceso nombre="APORTACION SIN FORMULARIO">
+        <campo>
+            <nombre>Expediente</nombre>
+            <tipo>texto</tipo>
+            <valor>15</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Tipo</nombre>
+            <tipo>lista</tipo>
+            <valor>EXPULSION,RECURSO,ASILO,DEVOLUCION,SANCION / MULTA,VISADO,RENOVACION MENA</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Nombre del Documento</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>  
+    </proceso>
+
+    <proceso nombre="ACUSES DE RECIBO">
+        <campo>
+            <nombre>Ubicación Física</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Fecha de Notificación</nombre>
+            <tipo>texto</tipo>
+            <valor>10</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>  
+    </proceso>
+
+    <proceso nombre="LOTES DE ESCRITOS">
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>  
+    </proceso>
+
+    <proceso nombre="TASAS PAGADAS">
+        <campo>
+            <nombre>Fecha de Pago</nombre>
+            <tipo>texto</tipo>
+            <valor>10</valor>
+            <obligatorio>S</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Actualización Fases del Expediente</nombre>
+            <tipo>check</tipo>
+            <valor>0</valor>
+            <obligatorio>N</obligatorio>
+        </campo>
+        <campo>
+            <nombre>Email</nombre>
+            <tipo>texto</tipo>
+            <valor>50</valor>
+            <obligatorio>N</obligatorio>
+        </campo>  
+    </proceso>
+</procesos>
+
+
