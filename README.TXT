@@ -1,4 +1,3 @@
-
 jscan v1.0 109
 ==============
 
@@ -13,8 +12,8 @@ Aplicación desarrollada con Netbeans en Java Swing basada principalmente en  la
 * Pdfbox (Importación de PDFs)
 * JAI (Tratamiento de Imágenes)
 * XStream (Creación y lectura de XML)
-* ZXing (Detección de Códigos de barras) 
-* Mina ()
+* ZXing (Detección de Códigos de barras 1D) 
+* Mina (Comunicaciones a bajo nivel)
 
 
 UTILIDAD
