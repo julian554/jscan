@@ -5,7 +5,7 @@ jscan v1.0 109
 SOFTWARE
 ========
 
-Aplicación desarrollada con Netbeans en Java Swing basada principalmente en  las librerías:
+Aplicación desarrollada con Netbeans en Java Swing basada principalmente en las librerías:
 
 * JTwain (Escaneado de documentos)
 * Itext (Generación de PDFs)
@@ -21,4 +21,4 @@ UTILIDAD
 
 * Escanear imágenes desde cualquier escáner Twain (probado en Windows XP (32 bits), 7 y 8 64 bits)
 * Importar imágenes de PDF, TIF, JPG, GIF, BMP o PNG.
-* Guardar imágenes en los principales formatos gráficos (PDF (multipágina) , TIF (multipágina) , JPG, GIF, BMP o PNG). 
+* Guardar imágenes en los principales formatos gráficos (PDF (multipágina), TIF (multipágina),JPG ,GIF ,BMP o PNG). 
