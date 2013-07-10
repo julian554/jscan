@@ -22,3 +22,4 @@ UTILIDAD
 * Escanear imágenes desde cualquier escáner Twain (probado en Windows XP (32 bits), 7 y 8 64 bits)
 * Importar imágenes de PDF, TIF, JPG, GIF, BMP o PNG.
 * Guardar imágenes en los principales formatos gráficos (PDF (multipágina), TIF (multipágina),JPG ,GIF ,BMP o PNG). 
+* Detección de códigos de barras 1D y 2D
