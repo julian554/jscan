@@ -147,11 +147,51 @@ public class CodigoBarras {
                 if (PantallaPrincipal.DEBUG) {
                     Utilidades.escribeLog("Error al leer código de barras NO Code128: " + ex1.getMessage());
                 }
+            } catch (Exception ex1) {
+                if (PantallaPrincipal.DEBUG) {
+                    Utilidades.escribeLog("Error al leer código de barras NO Code128: " + ex1.getMessage());
+                }
             }
         }
 
         System.gc();
         return resultadoCB;
+    }
+
+    public String leerCodigo2D(String fichero) {
+        //  ZXing  Multi-format 1D/2D barcode image processing library
+        String codigo = "";
+        UtilidadesPantalla pantutil = new UtilidadesPantalla();
+        BufferedImage image = null;
+        try {
+            image = pantutil.toBufferedImage(pantutil.loadImagenTIFF(fichero, 0));
+        } catch (Exception ex) {
+            Utilidades.escribeLog("Error al abrir Imagen para leer Código 2D " + " - " + ex.getMessage());
+        }
+
+        int tipoimagen = image.getType();
+        switch (tipoimagen) {
+            case java.awt.image.BufferedImage.TYPE_BYTE_GRAY:
+            case java.awt.image.BufferedImage.TYPE_BYTE_INDEXED:
+                image = pantutil.convertirBN(image);
+        }
+
+        LuminanceSource source = new BufferedImageLuminanceSource(image);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//        BinaryBitmap bitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
+
+        Result result;
+        try {
+            result = new MultiFormatReader().decode(bitmap);
+            codigo = String.valueOf(result.getText());
+        } catch (Exception ex) {
+            if (PantallaPrincipal.DEBUG) {
+                Utilidades.escribeLog("Error al leer código 2D: " + ex.getMessage());
+            }
+        }
+
+        System.gc();
+        return codigo;
     }
 
     private static List<Result> getResults(BufferedImage image) throws Exception {
