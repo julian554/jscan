@@ -247,6 +247,7 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         guardarImagen = new javax.swing.JButton();
         borrarImagen = new javax.swing.JButton();
         botonCB2D = new javax.swing.JButton();
+        botonCrearBidi = new javax.swing.JButton();
         panelVisorMini = new javax.swing.JScrollPane();
         panelMini = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -439,7 +440,7 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             }
         });
 
-        botonCB.setToolTipText("Detecta el código de barras de la imágen");
+        botonCB.setToolTipText("Detecta el código de barras CODE128 de la imágen");
         botonCB.setBorder(null);
         botonCB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCB.setMaximumSize(new java.awt.Dimension(43, 43));
@@ -487,6 +488,18 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             }
         });
 
+        botonCrearBidi.setToolTipText("Genera una imágen de un código QR a partir de un texto");
+        botonCrearBidi.setBorder(null);
+        botonCrearBidi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCrearBidi.setMaximumSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.setMinimumSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.setPreferredSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearBidiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelIconosImagenLayout = new javax.swing.GroupLayout(panelIconosImagen);
         panelIconosImagen.setLayout(panelIconosImagenLayout);
         panelIconosImagenLayout.setHorizontalGroup(
@@ -506,6 +519,8 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(borrarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonCrearBidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCB2D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,7 +541,8 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                     .addComponent(guardarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(borrarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCB2D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonCB2D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCrearBidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2))
         );
 
@@ -1753,6 +1769,18 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         }
     }//GEN-LAST:event_botonDigitalizarActionPerformed
 
+    private void botonCrearBidiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearBidiActionPerformed
+        PantallaTextoIn pantallaTexto = new PantallaTextoIn(this, true);
+        pantallaTexto.setTitle("Texto para crear Código QR");
+        pantallaTexto.setVisible(true);
+        String texto = pantallaTexto.getTexto();
+        if (!texto.isEmpty()) {
+            CodigoBarras cb = new CodigoBarras();
+            cb.CrearBidi(texto);
+            importarDeFichero(utilidades.crearDirBase() + utilidades.separador() + "qr_png.png");
+        }
+    }//GEN-LAST:event_botonCrearBidiActionPerformed
+
     private Boolean borrarLoteActual() {
         Boolean resultado = true;
 
@@ -1831,6 +1859,7 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JButton borrarImagen;
     private javax.swing.JButton botonCB;
     private javax.swing.JButton botonCB2D;
+    private javax.swing.JButton botonCrearBidi;
     private javax.swing.JButton botonDigitalizar;
     private javax.swing.JToggleButton botonDirectorio;
     private javax.swing.JButton botonEliminar;
@@ -2028,7 +2057,12 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         this.botonCB2D.setContentAreaFilled(false);
         this.botonCB2D.setBorderPainted(false);
 
-
+        imgURL = PantallaPrincipal.class.getClassLoader().getResource("es/jscan/Pantallas/imagenes/imagen-qr.png");
+        icono = new ImageIcon(imgURL);
+        this.botonCrearBidi.setIcon(icono);
+        this.botonCrearBidi.setBorder(null);
+        this.botonCrearBidi.setContentAreaFilled(false);
+        this.botonCrearBidi.setBorderPainted(false);
 
 
         scrollConfigura.revalidate();
@@ -3155,6 +3189,45 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             Utilidades.escribeLog("Error en -importarImagenes- Importando Imágenes - " + ex.getMessage());
 
         }
+    }
+
+    public void importarDeFichero(String fichero) {
+        try {
+            File fileImagen = new File(fichero);
+            String extension = fileImagen.getName().substring(fileImagen.getName().lastIndexOf('.') + 1, fileImagen.getName().length()).toLowerCase();
+
+            if (rutalote.equals("")) {
+                crearLote();
+            }
+            desdemin = false;
+
+            if (extension.equals("pdf")) {
+                importarDePdf(fileImagen);
+
+            } else if (extension.endsWith("jpg") || extension.endsWith("gif") || extension.endsWith("jpeg") || extension.endsWith("bmp") || extension.endsWith("png")) {
+                java.awt.image.BufferedImage imagen = javax.imageio.ImageIO.read(fileImagen);
+                if (fileImagen != null) {
+                    imagen = pantutil.convertirAGris((java.awt.image.BufferedImage) imagen);
+                    guardarImagen(imagen, contimagen);
+                    pintarImagen(imagen);
+                    cargarMiniaturas(contimagen);
+                    ponerBordeBoton(contimagen);
+                    javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            JScrollBar bar = panelVisorMini.getVerticalScrollBar();
+                            bar.setValue(bar.getMaximum());
+                        }
+                    });
+                    contimagen++;
+                }
+            } else if (extension.endsWith("tif") || extension.endsWith("tiff")) {
+                importarTiff(fileImagen);
+            }
+        } catch (IOException ex) {
+            Utilidades.escribeLog("Error en -importarImagenDirecta- Importando Imágenes - " + ex.getMessage());
+
+        }
+
     }
 
     public void importarTiff(final File archivo) {

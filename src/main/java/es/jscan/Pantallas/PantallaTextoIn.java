@@ -14,23 +14,11 @@ public class PantallaTextoIn extends javax.swing.JDialog {
 
     public static java.awt.Frame ventanapadre = null;
     public String boton = "N";
-    public  ArrayList<String> lista = new ArrayList<String>();
 
-    public  ArrayList<String> getLista() {
-        return lista;
-    }
-
-    public void rellenarLista(ArrayList<String> plista) {
-        textTexto.setText("");
-        for (int n = 0; n < plista.size(); n++) {
-            if (textTexto.getText().equals("")) {
-                textTexto.setText(plista.get(n).toString());
-            } else {
-                textTexto.setText(textTexto.getText() + "," + plista.get(n).toString());
-            }
-        }
-    }
-
+    public String getTexto(){
+        return textTexto.getText();
+    }  
+    
     public PantallaTextoIn(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         ventanapadre = parent;
@@ -74,6 +62,7 @@ public class PantallaTextoIn extends javax.swing.JDialog {
         textTexto.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         textTexto.setLineWrap(true);
         textTexto.setRows(5);
+        textTexto.setWrapStyleWord(true);
         jScrollPane1.setViewportView(textTexto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,11 +102,6 @@ public class PantallaTextoIn extends javax.swing.JDialog {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         boton = "S";
         if (!textTexto.getText().equals("")) {
-            StringTokenizer st = new StringTokenizer(textTexto.getText(), ",");
-            while (st.hasMoreTokens()) {
-                String cadena = st.nextToken();
-                lista.add(cadena);
-            }
         }
         dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed

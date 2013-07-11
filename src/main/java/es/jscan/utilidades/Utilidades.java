@@ -67,17 +67,8 @@ public class Utilidades {
         String SO = so();
         String separador = separador();
         String dirbase = "";
-        // dirbase = usuarioHome() + separador + "digita";
-        if (!SO.toLowerCase().contains("windows")) {
-            dirbase = usuarioHome() + separador + "digita";
-        } else {
-            if (existeFichero("d:\\")) {
-                dirbase = "d:\\usuarios" + separador + usuario() + separador + "digita";
-            } else {
-                dirbase = usuarioHome() + separador + "digita";
-            }
-        }
-        // Siempre tiene que existir la ruta "digita" en el "home" del usuario
+        dirbase = usuarioHome() + separador + "jscan";
+        // Siempre tiene que existir la ruta "jscan" en el "home" del usuario
         crearDirectorio(dirbase);
         crearDirectorio(dirbase + separador + "lotes");
         crearDirectorio(dirbase + separador + "pendientes");
