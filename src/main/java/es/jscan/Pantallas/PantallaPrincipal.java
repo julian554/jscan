@@ -246,6 +246,8 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         botonCB = new javax.swing.JButton();
         guardarImagen = new javax.swing.JButton();
         borrarImagen = new javax.swing.JButton();
+        botonCB2D = new javax.swing.JButton();
+        botonCrearBidi = new javax.swing.JButton();
         panelVisorMini = new javax.swing.JScrollPane();
         panelMini = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -280,8 +282,8 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         textoDirectorio = new javax.swing.JTextField();
         botonDirectorio = new javax.swing.JToggleButton();
         comboTipoFichero = new javax.swing.JComboBox();
-        etiquetaCB = new javax.swing.JLabel();
-        labelInfoUsuario = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        etiquetaCB = new javax.swing.JTextArea();
         jMenuPrincipal = new javax.swing.JMenuBar();
         opcionOpciones = new javax.swing.JMenu();
         opcionDigitalizar = new javax.swing.JMenuItem();
@@ -438,7 +440,7 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             }
         });
 
-        botonCB.setToolTipText("Detecta el código de barras de la imágen");
+        botonCB.setToolTipText("Detecta el código de barras CODE128 de la imágen");
         botonCB.setBorder(null);
         botonCB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonCB.setMaximumSize(new java.awt.Dimension(43, 43));
@@ -474,6 +476,30 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             }
         });
 
+        botonCB2D.setToolTipText("Detecta el código de barras de la imágen");
+        botonCB2D.setBorder(null);
+        botonCB2D.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCB2D.setMaximumSize(new java.awt.Dimension(43, 43));
+        botonCB2D.setMinimumSize(new java.awt.Dimension(43, 43));
+        botonCB2D.setPreferredSize(new java.awt.Dimension(43, 43));
+        botonCB2D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCB2DActionPerformed(evt);
+            }
+        });
+
+        botonCrearBidi.setToolTipText("Genera una imágen de un código QR a partir de un texto");
+        botonCrearBidi.setBorder(null);
+        botonCrearBidi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCrearBidi.setMaximumSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.setMinimumSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.setPreferredSize(new java.awt.Dimension(43, 43));
+        botonCrearBidi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearBidiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelIconosImagenLayout = new javax.swing.GroupLayout(panelIconosImagen);
         panelIconosImagen.setLayout(panelIconosImagenLayout);
         panelIconosImagenLayout.setHorizontalGroup(
@@ -493,7 +519,11 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(borrarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonCrearBidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCB2D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -510,7 +540,9 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                     .addComponent(rotar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(guardarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(borrarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCB2D, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCrearBidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2))
         );
 
@@ -885,27 +917,17 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         comboTipoFichero.setBounds(8, 162, 250, 25);
         panelValores.add(comboTipoFichero, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        etiquetaCB.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        etiquetaCB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaCB.setToolTipText("Código de barras detectado en la imagen");
-        etiquetaCB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        labelInfoUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        labelInfoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelInfoUsuario.setToolTipText("Usuario LDAP - Código de provincia del usuario");
-        labelInfoUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        labelInfoUsuario.setFocusable(false);
-        labelInfoUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        labelInfoUsuario.setMaximumSize(new java.awt.Dimension(22, 265));
-        labelInfoUsuario.setMinimumSize(new java.awt.Dimension(22, 265));
-        labelInfoUsuario.setPreferredSize(new java.awt.Dimension(22, 265));
-        labelInfoUsuario.setRequestFocusEnabled(false);
+        etiquetaCB.setEditable(false);
+        etiquetaCB.setColumns(2);
+        etiquetaCB.setLineWrap(true);
+        etiquetaCB.setRows(2);
+        etiquetaCB.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(etiquetaCB);
 
         javax.swing.GroupLayout panelConfiguraLayout = new javax.swing.GroupLayout(panelConfigura);
         panelConfigura.setLayout(panelConfiguraLayout);
         panelConfiguraLayout.setHorizontalGroup(
             panelConfiguraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(etiquetaCB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelConfiguraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelConfiguraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -923,9 +945,9 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
-                    .addGroup(panelConfiguraLayout.createSequentialGroup()
-                        .addComponent(labelInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfiguraLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())))
         );
         panelConfiguraLayout.setVerticalGroup(
             panelConfiguraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -939,12 +961,10 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEscaner, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelValores, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(labelInfoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(etiquetaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addComponent(panelValores, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         panelAccion.getAccessibleContext().setAccessibleName("PanelAccion");
@@ -1270,14 +1290,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboColorActionPerformed
-        seleccionarColor();
-    }//GEN-LAST:event_comboColorActionPerformed
-
-    private void comboResolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboResolucionActionPerformed
-        seleccionarResolucion();
-    }//GEN-LAST:event_comboResolucionActionPerformed
-
     private void opcionAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionAboutActionPerformed
         mostrarAcercade();
     }//GEN-LAST:event_opcionAboutActionPerformed
@@ -1299,15 +1311,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
     }//GEN-LAST:event_formComponentResized
-    private void botonSelEscanerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSelEscanerActionPerformed
-        selecionarEscaner();
-    }//GEN-LAST:event_botonSelEscanerActionPerformed
-
-    private void botonDigitalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDigitalizarActionPerformed
-        if (!nombreEscaner.getText().isEmpty()) {
-            escanear();
-        }
-    }//GEN-LAST:event_botonDigitalizarActionPerformed
 
     private void zoomMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zoomMasActionPerformed
         if (pd != null) {
@@ -1378,10 +1381,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         }
     }
 
-    private void botonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarActionPerformed
-        enviar();
-    }//GEN-LAST:event_botonEnviarActionPerformed
-
     private void ajustarAnchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustarAnchoActionPerformed
         if (pd != null) {
             pd.ajustarAncho(panelVisorImagen.getWidth());
@@ -1396,9 +1395,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         }
     }//GEN-LAST:event_ajustarAnchoActionPerformed
 
-    private void botonImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImportarActionPerformed
-        importarImagenes();
-    }//GEN-LAST:event_botonImportarActionPerformed
     private void rotarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotarActionPerformed
         if (pd != null) {
             pd.rotar();
@@ -1409,10 +1405,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             System.gc();
         }
     }//GEN-LAST:event_rotarActionPerformed
-
-    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        borrarLoteActual();
-    }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCBActionPerformed
         if (contimagen > 0) {
@@ -1429,17 +1421,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             }
         }
     }//GEN-LAST:event_botonCBActionPerformed
-
-    private void comboResolucionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboResolucionItemStateChanged
-        seleccionarResolucion();
-    }//GEN-LAST:event_comboResolucionItemStateChanged
-
-    private void comboColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColorItemStateChanged
-        seleccionarColor();
-    }//GEN-LAST:event_comboColorItemStateChanged
-    private void checkDuplexStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkDuplexStateChanged
-        seleccionarDuplex();
-    }//GEN-LAST:event_checkDuplexStateChanged
 
     private void borrarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarImagenActionPerformed
         if (minisel >= 0) {
@@ -1464,19 +1445,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         mostrarLotes();
 
     }//GEN-LAST:event_opcionLotesActionPerformed
-    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        if (pd != null) {
-            guardarLote();
-        }
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
-    private void sliderBrilloStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderBrilloStateChanged
-        seleccionarBrillo();
-    }//GEN-LAST:event_sliderBrilloStateChanged
-
-    private void sliderContrasteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderContrasteStateChanged
-        seleccionarContraste();
-    }//GEN-LAST:event_sliderContrasteStateChanged
 
     private void opcionManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionManualActionPerformed
 //        VisorPdfs vpdf = new VisorPdfs();
@@ -1686,21 +1654,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         }
     }//GEN-LAST:event_opcionDebugActionPerformed
 
-    private void botonDirectorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDirectorioActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new java.io.File("."));
-        chooser.setDialogTitle("Seleccionar directorio");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.setAcceptAllFileFilterUsed(false);
-        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            textoDirectorio.setText(chooser.getSelectedFile().toString());
-        } else {
-            if (DEBUG) {
-                Utilidades.escribeLog("No se ha seleccionado directorio de salida ");
-            }
-        }
-    }//GEN-LAST:event_botonDirectorioActionPerformed
-
     private static void open(URI uri) {
         if (Desktop.isDesktopSupported()) {
             try {
@@ -1732,6 +1685,101 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_opcionLicenciaXStreamActionPerformed
+
+    private void botonCB2DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCB2DActionPerformed
+        if (contimagen > 0) {
+            CodigoBarras cb = new CodigoBarras();
+            String resultadoCB = cb.leerCodigo2D(rutaboton[minisel]);
+            if (!resultadoCB.isEmpty()) {
+                etiquetaCB.setText(resultadoCB);
+            } else {
+                etiquetaCB.setText("");
+            }
+        }
+    }//GEN-LAST:event_botonCB2DActionPerformed
+
+    private void botonDirectorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDirectorioActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Seleccionar directorio");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            textoDirectorio.setText(chooser.getSelectedFile().toString());
+        } else {
+            if (DEBUG) {
+                Utilidades.escribeLog("No se ha seleccionado directorio de salida ");
+            }
+        }
+    }//GEN-LAST:event_botonDirectorioActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        borrarLoteActual();
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        if (pd != null) {
+            guardarLote();
+        }
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarActionPerformed
+        enviar();
+    }//GEN-LAST:event_botonEnviarActionPerformed
+
+    private void sliderContrasteStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderContrasteStateChanged
+        seleccionarContraste();
+    }//GEN-LAST:event_sliderContrasteStateChanged
+
+    private void sliderBrilloStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderBrilloStateChanged
+        seleccionarBrillo();
+    }//GEN-LAST:event_sliderBrilloStateChanged
+
+    private void checkDuplexStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkDuplexStateChanged
+        seleccionarDuplex();
+    }//GEN-LAST:event_checkDuplexStateChanged
+
+    private void comboResolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboResolucionActionPerformed
+        seleccionarResolucion();
+    }//GEN-LAST:event_comboResolucionActionPerformed
+
+    private void comboResolucionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboResolucionItemStateChanged
+        seleccionarResolucion();
+    }//GEN-LAST:event_comboResolucionItemStateChanged
+
+    private void comboColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboColorActionPerformed
+        seleccionarColor();
+    }//GEN-LAST:event_comboColorActionPerformed
+
+    private void comboColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboColorItemStateChanged
+        seleccionarColor();
+    }//GEN-LAST:event_comboColorItemStateChanged
+
+    private void botonSelEscanerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSelEscanerActionPerformed
+        selecionarEscaner();
+    }//GEN-LAST:event_botonSelEscanerActionPerformed
+
+    private void botonImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImportarActionPerformed
+        importarImagenes();
+    }//GEN-LAST:event_botonImportarActionPerformed
+
+    private void botonDigitalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDigitalizarActionPerformed
+        if (!nombreEscaner.getText().isEmpty()) {
+            escanear();
+        }
+    }//GEN-LAST:event_botonDigitalizarActionPerformed
+
+    private void botonCrearBidiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearBidiActionPerformed
+        PantallaTextoIn pantallaTexto = new PantallaTextoIn(this, true);
+        pantallaTexto.setTitle("Texto para crear Código QR");
+        pantallaTexto.setVisible(true);
+        String texto = pantallaTexto.getTexto();
+        if (!texto.isEmpty()) {
+            CodigoBarras cb = new CodigoBarras();
+            cb.CrearBidi(texto);
+            importarDeFichero(utilidades.crearDirBase() + utilidades.separador() + "qr_png.png");
+        }
+    }//GEN-LAST:event_botonCrearBidiActionPerformed
 
     private Boolean borrarLoteActual() {
         Boolean resultado = true;
@@ -1810,6 +1858,8 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JButton ajustarAncho;
     private javax.swing.JButton borrarImagen;
     private javax.swing.JButton botonCB;
+    private javax.swing.JButton botonCB2D;
+    private javax.swing.JButton botonCrearBidi;
     private javax.swing.JButton botonDigitalizar;
     private javax.swing.JToggleButton botonDirectorio;
     private javax.swing.JButton botonEliminar;
@@ -1821,12 +1871,13 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JComboBox comboColor;
     private javax.swing.JComboBox comboResolucion;
     private javax.swing.JComboBox comboTipoFichero;
-    private javax.swing.JLabel etiquetaCB;
+    private javax.swing.JTextArea etiquetaCB;
     private javax.swing.JButton guardarImagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuPrincipal;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
@@ -1838,7 +1889,6 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JLabel labelBrillo1;
     private javax.swing.JLabel labelBrillo2;
     private javax.swing.JLabel labelContraste;
-    private javax.swing.JLabel labelInfoUsuario;
     private javax.swing.JLabel labelNumPaginas;
     private javax.swing.JLabel labelPagina;
     private javax.swing.JLabel labelTotalPaginas;
@@ -1999,6 +2049,21 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
         this.botonCB.setBorder(null);
         this.botonCB.setContentAreaFilled(false);
         this.botonCB.setBorderPainted(false);
+
+        imgURL = PantallaPrincipal.class.getClassLoader().getResource("es/jscan/Pantallas/imagenes/cb2d.png");
+        icono = new ImageIcon(imgURL);
+        this.botonCB2D.setIcon(icono);
+        this.botonCB2D.setBorder(null);
+        this.botonCB2D.setContentAreaFilled(false);
+        this.botonCB2D.setBorderPainted(false);
+
+        imgURL = PantallaPrincipal.class.getClassLoader().getResource("es/jscan/Pantallas/imagenes/imagen-qr.png");
+        icono = new ImageIcon(imgURL);
+        this.botonCrearBidi.setIcon(icono);
+        this.botonCrearBidi.setBorder(null);
+        this.botonCrearBidi.setContentAreaFilled(false);
+        this.botonCrearBidi.setBorderPainted(false);
+
 
         scrollConfigura.revalidate();
         scrollImagenes.revalidate();
@@ -3124,6 +3189,45 @@ public class PantallaPrincipal extends javax.swing.JFrame implements PropertyCha
             Utilidades.escribeLog("Error en -importarImagenes- Importando Imágenes - " + ex.getMessage());
 
         }
+    }
+
+    public void importarDeFichero(String fichero) {
+        try {
+            File fileImagen = new File(fichero);
+            String extension = fileImagen.getName().substring(fileImagen.getName().lastIndexOf('.') + 1, fileImagen.getName().length()).toLowerCase();
+
+            if (rutalote.equals("")) {
+                crearLote();
+            }
+            desdemin = false;
+
+            if (extension.equals("pdf")) {
+                importarDePdf(fileImagen);
+
+            } else if (extension.endsWith("jpg") || extension.endsWith("gif") || extension.endsWith("jpeg") || extension.endsWith("bmp") || extension.endsWith("png")) {
+                java.awt.image.BufferedImage imagen = javax.imageio.ImageIO.read(fileImagen);
+                if (fileImagen != null) {
+                    imagen = pantutil.convertirAGris((java.awt.image.BufferedImage) imagen);
+                    guardarImagen(imagen, contimagen);
+                    pintarImagen(imagen);
+                    cargarMiniaturas(contimagen);
+                    ponerBordeBoton(contimagen);
+                    javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            JScrollBar bar = panelVisorMini.getVerticalScrollBar();
+                            bar.setValue(bar.getMaximum());
+                        }
+                    });
+                    contimagen++;
+                }
+            } else if (extension.endsWith("tif") || extension.endsWith("tiff")) {
+                importarTiff(fileImagen);
+            }
+        } catch (IOException ex) {
+            Utilidades.escribeLog("Error en -importarImagenDirecta- Importando Imágenes - " + ex.getMessage());
+
+        }
+
     }
 
     public void importarTiff(final File archivo) {

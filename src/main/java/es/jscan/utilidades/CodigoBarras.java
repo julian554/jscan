@@ -2,14 +2,25 @@ package es.jscan.utilidades;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.GlobalHistogramBinarizer;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.multi.GenericMultipleBarcodeReader;
 import com.google.zxing.multi.MultipleBarcodeReader;
 import com.google.zxing.multi.qrcode.QRCodeMultiReader;
 import com.google.zxing.oned.Code128Reader;
+import com.google.zxing.qrcode.QRCodeWriter;
 import es.jscan.Pantallas.PantallaPrincipal;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.util.*;
 
 public class CodigoBarras {
@@ -75,6 +86,46 @@ public class CodigoBarras {
 //        }
 
 
+    }
+
+    public void CrearBidi(String cadena) {
+        Charset charset = Charset.forName("ISO-8859-1");
+        CharsetEncoder encoder = charset.newEncoder();
+        byte[] b = null;
+        try {
+// Convert a string to ISO-8859-1 bytes in a ByteBuffer
+            ByteBuffer bbuf = encoder.encode(CharBuffer.wrap(cadena));
+            b = bbuf.array();
+        } catch (CharacterCodingException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String data="";
+        try {
+            data = new String(b, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            Utilidades.escribeLog(e.getMessage());
+        }
+
+// get a byte matrix for the data
+        BitMatrix matrix = null;
+        int h = 100;
+        int w = 100;
+        com.google.zxing.Writer writer = new QRCodeWriter();
+        try {
+            matrix = writer.encode(data, com.google.zxing.BarcodeFormat.QR_CODE, w, h);
+        } catch (com.google.zxing.WriterException e) {
+            Utilidades.escribeLog(e.getMessage());
+        }
+
+        String filePath = utilidades.crearDirBase()+utilidades.separador() + "qr_png.png";
+        File file = new File(filePath);
+        try {
+            MatrixToImageWriter.writeToFile(matrix, "PNG", file);
+            Utilidades.escribeLog("Creando fichero Bidi en " + file.getAbsolutePath());
+        } catch (IOException e) {
+            Utilidades.escribeLog(e.getMessage());
+        }
     }
 
     public ArrayList<String> leerCodigo(String fichero) {
@@ -147,11 +198,51 @@ public class CodigoBarras {
                 if (PantallaPrincipal.DEBUG) {
                     Utilidades.escribeLog("Error al leer código de barras NO Code128: " + ex1.getMessage());
                 }
+            } catch (Exception ex1) {
+                if (PantallaPrincipal.DEBUG) {
+                    Utilidades.escribeLog("Error al leer código de barras NO Code128: " + ex1.getMessage());
+                }
             }
         }
 
         System.gc();
         return resultadoCB;
+    }
+
+    public String leerCodigo2D(String fichero) {
+        //  ZXing  Multi-format 1D/2D barcode image processing library
+        String codigo = "";
+        UtilidadesPantalla pantutil = new UtilidadesPantalla();
+        BufferedImage image = null;
+        try {
+            image = pantutil.toBufferedImage(pantutil.loadImagenTIFF(fichero, 0));
+        } catch (Exception ex) {
+            Utilidades.escribeLog("Error al abrir Imagen para leer Código 2D " + " - " + ex.getMessage());
+        }
+
+        int tipoimagen = image.getType();
+        switch (tipoimagen) {
+            case java.awt.image.BufferedImage.TYPE_BYTE_GRAY:
+            case java.awt.image.BufferedImage.TYPE_BYTE_INDEXED:
+                image = pantutil.convertirBN(image);
+        }
+
+        LuminanceSource source = new BufferedImageLuminanceSource(image);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//        BinaryBitmap bitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
+
+        Result result;
+        try {
+            result = new MultiFormatReader().decode(bitmap);
+            codigo = String.valueOf(result.getText());
+        } catch (Exception ex) {
+            if (PantallaPrincipal.DEBUG) {
+                Utilidades.escribeLog("Error al leer código 2D: " + ex.getMessage());
+            }
+        }
+
+        System.gc();
+        return codigo;
     }
 
     private static List<Result> getResults(BufferedImage image) throws Exception {
