@@ -7,7 +7,7 @@ SOFTWARE
 
 Aplicación desarrollada con Netbeans en Java Swing basada principalmente en las librerías:
 
-* JTwain (Escaneado de documentos)
+* JTwain - mmscomputing (Escaneado de documentos)
 * Itext (Generación de PDFs)
 * Pdfbox (Importación de PDFs)
 * JAI (Tratamiento de Imágenes)
