@@ -415,7 +415,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="scrollImagenes" alignment="0" max="32767" attributes="0"/>
-          <Component id="scrollConfigura" alignment="0" pref="747" max="32767" attributes="0"/>
+          <Component id="scrollConfigura" alignment="0" pref="742" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -448,7 +448,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelIconosImagen" pref="539" max="32767" attributes="0"/>
+                          <Component id="panelIconosImagen" pref="534" max="32767" attributes="0"/>
                           <Component id="panelVisorImagen" alignment="1" pref="539" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -463,12 +463,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelIconosImagen" linkSize="5" min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="panelIconosImagen" linkSize="5" min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="jPanel1" linkSize="5" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelVisorMini" pref="0" max="32767" attributes="0"/>
+                          <Component id="panelVisorMini" pref="665" max="32767" attributes="0"/>
                           <Component id="panelVisorImagen" pref="677" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -509,12 +509,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="537" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="532" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="675" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="663" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -559,7 +559,7 @@
                           <Component id="guardarImagen" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="borrarImagen" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
                           <Component id="botonCrearBidi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="botonCB2D" min="-2" max="-2" attributes="0"/>
@@ -573,7 +573,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="zoomMas" alignment="2" pref="45" max="32767" attributes="0"/>
+                              <Component id="zoomMas" alignment="2" pref="49" max="32767" attributes="0"/>
                               <Component id="zoomMenos" alignment="2" max="32767" attributes="0"/>
                               <Component id="zoom100" alignment="2" pref="45" max="32767" attributes="0"/>
                               <Component id="ajustarAncho" linkSize="2" alignment="2" max="32767" attributes="0"/>
@@ -1035,7 +1035,7 @@
                       <Component id="panelValores" min="-2" pref="213" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
